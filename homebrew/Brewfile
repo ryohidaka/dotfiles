@@ -1,0 +1,9 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "microsoft/mssql-release"
+tap "rbenv/tap"
+brew "go"
+brew "mas"
+cask "postman"
+mas "Xcode", id: 497799835
