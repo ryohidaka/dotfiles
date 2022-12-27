@@ -5,8 +5,7 @@ DIR=~/dotfiles
 sync:
 
 # zsh
-	ln -s ${DIR}/zsh/zshenv ~/.zshenv
-	ln -s ${DIR}/zsh/zshrc ~/.zshrc
+	cd zsh && make sync
 
 # Homebrew
 	ln -s ${DIR}/homebrew/Brewfile ~/.Brewfile
@@ -20,8 +19,7 @@ sync:
 uninstall:
 
 # zsh
-	rm -f ~/.zshenv
-	rm -f ~/.zshrc
+	cd zsh && make delete
 
 # Homebrew
 	rm -f ~/.Brewfile
