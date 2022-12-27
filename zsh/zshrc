@@ -1,3 +1,8 @@
+#!/bin/bash
+
 # Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+# Oh My Zshの設定を読み込み
+source ${PWD}/zsh/oh-my-zsh.sh
