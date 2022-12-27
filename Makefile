@@ -7,7 +7,6 @@ sync:
 # zsh
 	ln -s ${DIR}/zsh/zshenv ~/.zshenv
 	ln -s ${DIR}/zsh/zshrc ~/.zshrc
-	ln -s ${DIR}/zsh/zprofile ~/.zprofile
 
 # Homebrew
 	ln -s ${DIR}/homebrew/Brewfile ~/.Brewfile
@@ -18,16 +17,11 @@ sync:
 # Prettier
 	ln -s ${DIR}/prettier/prettierrc.yaml ~/.prettierrc
 
-# husky
-	ln -s ${DIR}/husky/huskyrc ~/.huskyrc
-
-
 uninstall:
 
 # zsh
 	rm -f ~/.zshenv
 	rm -f ~/.zshrc
-	rm -f ~/.zprofile
 
 # Homebrew
 	rm -f ~/.Brewfile
@@ -38,5 +32,3 @@ uninstall:
 # Prettier
 	rm -f ~/.prettierrc
 
-# husky
-	rm -f ~/.huskyrc
