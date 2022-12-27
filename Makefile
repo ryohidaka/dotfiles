@@ -8,7 +8,7 @@ sync:
 	cd zsh && make sync
 
 # Homebrew
-	ln -s ${DIR}/homebrew/Brewfile ~/.Brewfile
+	cd homebrew && make install
 
 # VSCode
 	cd vscode && make sync
@@ -22,11 +22,10 @@ uninstall:
 	cd zsh && make delete
 
 # Homebrew
-	rm -f ~/.Brewfile
+	cd homebrew && make uninstall
 
 # VSCode
 	cd vscode && make delete
 
 # Prettier
 	cd prettier && make delete
-
