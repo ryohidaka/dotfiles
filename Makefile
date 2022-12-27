@@ -11,7 +11,7 @@ sync:
 	ln -s ${DIR}/homebrew/Brewfile ~/.Brewfile
 
 # VSCode
-	ln -s ${DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	cd vscode && make sync
 
 # Prettier
 	cd prettier && make sync
@@ -25,7 +25,7 @@ uninstall:
 	rm -f ~/.Brewfile
 
 # VSCode
-	rm -f ~/Library/Application\ Support/Code/User/settings.json
+	cd vscode && make delete
 
 # Prettier
 	cd prettier && make delete
