@@ -8,7 +8,7 @@ sync:
 	cd zsh && make sync
 
 # Homebrew
-	ln -s ${DIR}/homebrew/Brewfile ~/.Brewfile
+	cd homebrew && make install
 
 # VSCode
 	cd vscode && make sync
@@ -20,9 +20,6 @@ uninstall:
 
 # zsh
 	cd zsh && make delete
-
-# Homebrew
-	rm -f ~/.Brewfile
 
 # VSCode
 	cd vscode && make delete
