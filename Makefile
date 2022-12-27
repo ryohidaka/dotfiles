@@ -1,5 +1,4 @@
 #!/bin/sh
-DIR=~/dotfiles
 
 # シンボリックリンク作成用スクリプト
 sync:
@@ -29,4 +28,3 @@ uninstall:
 
 # Prettier
 	cd prettier && make delete
-
