@@ -15,7 +15,7 @@ sync:
 	ln -s ${DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 
 # Prettier
-	ln -s ${DIR}/prettier/prettierrc.yaml ~/.prettierrc
+	cd prettier && make sync
 
 uninstall:
 
@@ -30,5 +30,5 @@ uninstall:
 	rm -f ~/Library/Application\ Support/Code/User/settings.json
 
 # Prettier
-	rm -f ~/.prettierrc
+	cd prettier && make delete
 
