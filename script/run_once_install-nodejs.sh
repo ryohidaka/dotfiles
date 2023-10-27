@@ -9,4 +9,8 @@ volta install node
 node --version
 npm --version
 
+# Install yarn
+volta install yarn
+yarn --version
+
 echo "[Complete] Install Node.js"
