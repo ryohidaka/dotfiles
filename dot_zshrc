@@ -23,3 +23,9 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
 alias python=python3
+
+# Go
+## goenv
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
