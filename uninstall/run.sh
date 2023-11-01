@@ -17,3 +17,6 @@ sh $DIR/uninstall-python.sh
 
 # Uninstall Go
 sh $DIR/uninstall-go.sh
+
+# Reset zsh files
+sh $DIR/reset-zsh-files.sh
