@@ -14,3 +14,6 @@ sh $DIR/uninstall-nodejs.sh
 
 # Uninstall Python
 sh $DIR/uninstall-python.sh
+
+# Uninstall Go
+sh $DIR/uninstall-go.sh
