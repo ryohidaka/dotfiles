@@ -11,3 +11,6 @@ sudo sh $DIR/uninstall-homebrew.sh
 
 # Uninstall Node.js
 sh $DIR/uninstall-nodejs.sh
+
+# Uninstall Python
+sh $DIR/uninstall-python.sh
