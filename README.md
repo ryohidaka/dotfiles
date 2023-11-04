@@ -1,5 +1,16 @@
 # dotfiles
 
+## Config
+
+`.config/chezmoi/chezmoi.toml`
+
+```toml
+[data]
+  [data.git]
+    user = ""
+    email = ""
+```
+
 ## Installation
 
 ```zsh
