@@ -5,3 +5,4 @@ tap "homebrew/core"
 brew 'sheldon'
 brew 'pyenv'
 brew 'goenv'
+brew 'rustup-init'
