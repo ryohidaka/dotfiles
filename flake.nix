@@ -34,5 +34,9 @@
     {
       # Build a darwinConfiguration for each host
       darwinConfigurations = builtins.mapAttrs lib.mkDarwinSystem hosts;
+
+      # Format: nix fmt
+      formatter.x86_64-darwin = nixpkgs.legacyPackages.x86_64-darwin.treefmt;
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.treefmt;
     };
 }

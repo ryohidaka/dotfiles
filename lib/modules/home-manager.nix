@@ -16,12 +16,17 @@
     };
 
     users.${user} =
-      { lib, ... }:
+      { pkgs, lib, ... }:
       {
         imports = homeModules;
         home.username = user;
         home.homeDirectory = lib.mkForce "/Users/${user}";
         home.stateVersion = "25.11";
+
+        home.packages = with pkgs; [
+          treefmt # Multi-formatter runner
+          nixfmt-rfc-style # Nix formatter
+        ];
       };
   };
 }
