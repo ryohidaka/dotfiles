@@ -19,7 +19,9 @@
       lib = import ./lib inputs;
 
       # Host definitions
-      hosts = { };
+      hosts = {
+        personal = import ./hosts/personal;
+      };
     in
     {
       # Build a darwinConfiguration for each host
