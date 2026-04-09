@@ -1,0 +1,8 @@
+pre-commit:
+  commands:
+    nix-fmt:
+      run: nix fmt
+      stage_fixed: true # Auto-stage formatted files
+
+    nix-check:
+      run: nix flake check --no-build path:. --impure --all-systems

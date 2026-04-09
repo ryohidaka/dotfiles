@@ -26,6 +26,7 @@
         home.packages = with pkgs; [
           treefmt # Multi-formatter runner
           nixfmt-rfc-style # Nix formatter
+          lefthook # Git Hooks
         ];
       };
   };
