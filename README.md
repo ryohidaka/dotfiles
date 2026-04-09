@@ -1,5 +1,7 @@
 # dotfiles
 
+[![CI](https://github.com/ryohidaka/dotfiles/actions/workflows/ci.yml/badge.svg)](https://github.com/ryohidaka/dotfiles/actions/workflows/ci.yml)
+
 Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flakes).
 
 ## Prerequisites
@@ -34,9 +36,11 @@ curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 
 ## Hosts
 
-| Host       | Platform      | Description                  |
-| ---------- | ------------- | ---------------------------- |
-| `personal` | x86_64-darwin | Personal machine (Intel Mac) |
+| Host         | Platform       | Description                           |
+| ------------ | -------------- | ------------------------------------- |
+| `personal`   | x86_64-darwin  | Personal machine (Intel Mac)          |
+| `ci-intel`   | x86_64-darwin  | GitHub Actions runner (Intel)         |
+| `ci-silicon` | aarch64-darwin | GitHub Actions runner (Apple Silicon) |
 
 ## Apply
 

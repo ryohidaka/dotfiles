@@ -1,0 +1,39 @@
+name: CI
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+    workflow_dispatch:
+
+jobs:
+    check:
+        name: Check flake
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: cachix/install-nix-action@v31
+            # nix-darwin configurations cannot be built on Linux.
+            # Only check flake syntax and evaluation.
+            - name: Check flake
+              run: nix flake check --no-build
+
+    build-intel:
+        name: Build nix-darwin (x86_64-darwin)
+        runs-on: macos-26-intel
+        needs: check
+        steps:
+            - uses: actions/checkout@v6
+            - uses: cachix/install-nix-action@v31
+            - name: Build nix-darwin configuration
+              run: nix build .#darwinConfigurations.ci-intel.system
+
+    build-silicon:
+        name: Build nix-darwin (aarch64-darwin)
+        runs-on: macos-latest
+        needs: check
+        steps:
+            - uses: actions/checkout@v6
+            - uses: cachix/install-nix-action@v31
+            - name: Build nix-darwin configuration
+              run: nix build .#darwinConfigurations.ci-silicon.system
