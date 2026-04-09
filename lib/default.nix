@@ -3,6 +3,7 @@ let
   inherit (inputs) self;
   nixDarwin = inputs."nix-darwin";
   homeManager = inputs."home-manager";
+  nixHomebrew = inputs."nix-homebrew";
 
   # Home-manager modules shared across all hosts
   baseHomeModules = [ ];
@@ -15,6 +16,8 @@ in
       modules = [
         # Core system settings (platform, user, nix options)
         (import ./modules/system.nix { inherit self; } hostCfg)
+
+        # home-manager integration for user environment
         homeManager.darwinModules.home-manager
         (import ./modules/home-manager.nix { inherit self; } (
           hostCfg
@@ -22,6 +25,10 @@ in
             homeModules = baseHomeModules ++ (hostCfg.homeModules or [ ]);
           }
         ))
+
+        # Homebrew integration
+        nixHomebrew.darwinModules.nix-homebrew
+        (import ./modules/homebrew.nix hostCfg)
       ];
     };
 }

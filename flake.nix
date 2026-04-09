@@ -16,6 +16,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # nix-homebrew: Homebrew management via Nix
+    nix-homebrew = {
+      url = "github:zhaofengli/nix-homebrew";
+    };
   };
 
   outputs =
@@ -30,6 +35,13 @@
         ci-intel = import ./hosts/ci-intel;
         ci-silicon = import ./hosts/ci-silicon;
       };
+
+      # Platforms to expose formatter for
+      systems = [
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
     in
     {
       # Build a darwinConfiguration for each host
