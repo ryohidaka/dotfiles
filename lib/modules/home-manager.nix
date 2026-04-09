@@ -12,7 +12,7 @@
 
     # Allow home modules to reference flake-root files by absolute path
     extraSpecialArgs = {
-      flakeRoot = self;
+      flakeRoot = self.outPath;
     };
 
     users.${user} =
