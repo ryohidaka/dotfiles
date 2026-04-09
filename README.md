@@ -1,5 +1,7 @@
 # dotfiles
 
+[![CI](https://github.com/ryohidaka/dotfiles/actions/workflows/ci.yml/badge.svg)](https://github.com/ryohidaka/dotfiles/actions/workflows/ci.yml)
+
 Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flakes).
 
 ## Prerequisites
