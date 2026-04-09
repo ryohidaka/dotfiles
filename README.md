@@ -31,3 +31,17 @@ curl -fsSL https://install.determinate.systems/nix/tag/v3.12.2 | sh -s -- instal
 ```bash
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 ```
+
+## Hosts
+
+| Host       | Platform      | Description                  |
+| ---------- | ------------- | ---------------------------- |
+| `personal` | x86_64-darwin | Personal machine (Intel Mac) |
+
+## Apply
+
+### Personal machine
+
+```bash
+darwin-rebuild switch --flake path:.#personal --impure
+```
