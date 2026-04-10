@@ -11,6 +11,11 @@ let
       src = pkgs.zsh-completions;
       file = "share/zsh-completions/zsh-completions.plugin.zsh";
     }
+    {
+      name = "zsh-syntax-highlighting";
+      src = pkgs.zsh-syntax-highlighting;
+      file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
+    }
   ];
 in
 {
