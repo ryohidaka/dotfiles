@@ -6,7 +6,9 @@ let
   nixHomebrew = inputs."nix-homebrew";
 
   # Home-manager modules shared across all hosts
-  baseHomeModules = [ ];
+  baseHomeModules = [
+    ./home/shell
+  ];
 in
 {
   # Build a nix-darwin system configuration from a host definition
@@ -15,7 +17,7 @@ in
     nixDarwin.lib.darwinSystem {
       modules = [
         # Core system settings (platform, user, nix options)
-        (import ./darwin/system.nix { inherit self; } hostCfg)
+        (import ./darwin/system.nix hostCfg)
 
         # home-manager integration for user environment
         homeManager.darwinModules.home-manager
