@@ -6,6 +6,11 @@ let
       src = pkgs.zsh-autosuggestions;
       file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
     }
+    {
+      name = "zsh-completions";
+      src = pkgs.zsh-completions;
+      file = "share/zsh-completions/zsh-completions.plugin.zsh";
+    }
   ];
 in
 {
