@@ -1,4 +1,3 @@
-_:
 { platform, user, ... }:
 { ... }:
 {
@@ -13,4 +12,7 @@ _:
 
   # Disable nix managed by nix-darwin (e.g. when using Determinate Nix)
   nix.enable = false;
+
+  # Enable zsh system-level integration to ensure PATH is properly set
+  programs.zsh.enable = true;
 }
