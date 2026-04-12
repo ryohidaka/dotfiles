@@ -1,5 +1,5 @@
 { platform, user, ... }:
-{ ... }:
+{ pkgs, ... }:
 {
   # Target platform architecture (e.g. x86_64-darwin, aarch64-darwin)
   nixpkgs.hostPlatform = platform;
@@ -15,4 +15,9 @@
 
   # Enable zsh system-level integration to ensure PATH is properly set
   programs.zsh.enable = true;
+
+  # Install fonts system-wide (/Library/Fonts/)
+  fonts.packages = with pkgs.nerd-fonts; [
+    jetbrains-mono
+  ];
 }
