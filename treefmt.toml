@@ -5,3 +5,8 @@ includes = ["**/*.nix"]
 [formatter.lua]
 command = "stylua"
 includes = ["**/*.lua"]
+
+[formatter.taplo]
+command = "taplo"
+options = ["fmt"]
+includes = ["**/*.toml"]
