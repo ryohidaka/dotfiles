@@ -25,7 +25,7 @@ in
       enable = true;
     };
     sessionVariables = {
-      EDITOR = "vi";
+      EDITOR = "nvim";
       LANG = "en_US.UTF-8";
       SOPS_AGE_KEY_FILE = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     };

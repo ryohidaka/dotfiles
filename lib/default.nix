@@ -8,6 +8,7 @@ let
 
   # Home-manager modules shared across all hosts
   baseHomeModules = [
+    ./home/editor
     ./home/shell
     ./home/terminal
     ./home/tools
