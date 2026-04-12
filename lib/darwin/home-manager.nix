@@ -24,11 +24,7 @@
         home.stateVersion = "25.11";
 
         home.packages = with pkgs; [
-          treefmt # Multi-formatter runner
-          nixfmt-rfc-style # Nix formatter
           lefthook # Git Hooks
-          stylua # Lua formatter
-          taplo # TOML formatter
         ];
       };
   };
