@@ -1,4 +1,9 @@
-{ platform, user, ... }:
+{
+  platform,
+  user,
+  networking ? { },
+  ...
+}:
 { pkgs, ... }:
 {
   # Target platform architecture (e.g. x86_64-darwin, aarch64-darwin)
@@ -20,4 +25,7 @@
   fonts.packages = with pkgs.nerd-fonts; [
     jetbrains-mono
   ];
+
+  # Networking settings
+  inherit networking;
 }
