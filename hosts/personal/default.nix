@@ -1,3 +1,6 @@
+let
+  private = import ./private.nix;
+in
 {
   # Personal machine — Intel Mac
   platform = "x86_64-darwin";
@@ -10,4 +13,5 @@
 
   # Host-specific home-manager modules
   homeModules = [ ];
+  private = private;
 }
