@@ -27,6 +27,7 @@
           treefmt # Multi-formatter runner
           nixfmt-rfc-style # Nix formatter
           lefthook # Git Hooks
+          stylua # Lua formatter
         ];
       };
   };
