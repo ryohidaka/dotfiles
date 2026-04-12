@@ -21,6 +21,12 @@
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
     };
+
+    # sops-nix: secrets management via sops + age
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
