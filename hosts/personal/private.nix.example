@@ -1,2 +1,8 @@
 # Copy to private.nix and fill in your values (git-ignored)
-{ }
+{
+  networking = {
+    hostName = "your-hostname";
+    computerName = "your-hostname";
+    localHostName = "your-hostname";
+  };
+}

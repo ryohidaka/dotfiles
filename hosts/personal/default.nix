@@ -13,5 +13,10 @@ in
 
   # Host-specific home-manager modules
   homeModules = [ ];
+
+  # Networking settings
+  inherit (private) networking;
+
+  # Private configuration
   private = private;
 }
