@@ -4,11 +4,13 @@ let
   nixDarwin = inputs."nix-darwin";
   homeManager = inputs."home-manager";
   nixHomebrew = inputs."nix-homebrew";
+  sopsNix = inputs."sops-nix";
 
   # Home-manager modules shared across all hosts
   baseHomeModules = [
     ./home/shell
     ./home/terminal
+    ./home/tools
   ];
 in
 {
@@ -32,6 +34,8 @@ in
         # Homebrew integration
         nixHomebrew.darwinModules.nix-homebrew
         (import ./darwin/homebrew.nix hostCfg)
-      ];
+        sopsNix.darwinModules.sops
+      ]
+      ++ (hostCfg.darwinModules or [ ]);
     };
 }

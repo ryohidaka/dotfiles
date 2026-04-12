@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   zshPlugins = [
     {
@@ -27,6 +27,7 @@ in
     sessionVariables = {
       EDITOR = "vi";
       LANG = "en_US.UTF-8";
+      SOPS_AGE_KEY_FILE = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     };
     plugins = zshPlugins;
     initContent = ''

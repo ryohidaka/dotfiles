@@ -42,6 +42,26 @@ curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 | `ci-intel`   | x86_64-darwin  | GitHub Actions runner (Intel)         |
 | `ci-silicon` | aarch64-darwin | GitHub Actions runner (Apple Silicon) |
 
+## Secrets
+
+Secrets are managed with [sops](https://github.com/getsentry/sops) + [age](https://github.com/FiloSottile/age).
+
+### Generate age key
+
+```bash
+# Create key directory
+mkdir -p ~/.config/sops/age
+
+# Generate age key (one-time, using nix shell)
+nix shell nixpkgs#age --command age-keygen -o ~/.config/sops/age/keys.txt
+
+# Show public key — add this to .sops.yaml
+grep "public key" ~/.config/sops/age/keys.txt
+```
+
+> [!WARNING]
+> Keep `~/.config/sops/age/keys.txt` secret. Never commit it to the repository.
+
 ## Apply
 
 ### Personal machine
