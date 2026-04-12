@@ -16,16 +16,12 @@
     };
 
     users.${user} =
-      { pkgs, lib, ... }:
+      { lib, ... }:
       {
         imports = homeModules;
         home.username = user;
         home.homeDirectory = lib.mkForce "/Users/${user}";
         home.stateVersion = "25.11";
-
-        home.packages = with pkgs; [
-          lefthook # Git Hooks
-        ];
       };
   };
 }
