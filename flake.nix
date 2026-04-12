@@ -37,9 +37,9 @@
 
       # Host definitions
       hosts = {
-        personal = import ./hosts/personal;
-        ci-intel = import ./hosts/ci-intel;
-        ci-silicon = import ./hosts/ci-silicon;
+        personal = ./hosts/personal;
+        ci-intel = ./hosts/ci-intel;
+        ci-silicon = ./hosts/ci-silicon;
       };
     in
     {
