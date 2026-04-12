@@ -5,6 +5,6 @@
     nixfmt-rfc-style # Nix formatter
     stylua # Lua formatter
     taplo # TOML formatter
-    oxfmt # JS / Markdown / YAML formatter
+    oxfmt # Markdown / YAML formatter
   ];
 }

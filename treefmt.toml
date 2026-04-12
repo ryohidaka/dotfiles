@@ -14,3 +14,11 @@ includes = ["**/*.toml"]
 [formatter.oxfmt]
 command = "oxfmt"
 includes = ["**/*.md", "**/*.yaml", "**/*.yml"]
+excludes = [
+  "hosts/**/secrets.yaml",
+  "hosts/**/secrets.yml",
+  "**/secrets.yaml",
+  "**/secrets.yml",
+  "**/secrets*.yaml",
+  "**/secrets*.yml",
+]
