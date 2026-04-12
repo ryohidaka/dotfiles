@@ -35,6 +35,7 @@ in
         nixHomebrew.darwinModules.nix-homebrew
         (import ./darwin/homebrew.nix hostCfg)
         sopsNix.darwinModules.sops
-      ];
+      ]
+      ++ (hostCfg.darwinModules or [ ]);
     };
 }
