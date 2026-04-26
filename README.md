@@ -69,3 +69,24 @@ grep "public key" ~/.config/sops/age/keys.txt
 ```bash
 darwin-rebuild switch --flake path:.#personal --impure
 ```
+
+## SSH Keys
+
+SSH keys are managed per host under `~/.ssh/<host>/`.
+
+### Generate SSH key
+
+```bash
+# Create key directory
+mkdir -p ~/.ssh/github
+
+# Generate SSH key
+ssh-keygen -t ed25519 -f ~/.ssh/github/id_ed25519 -C "your_email@example.com"
+```
+
+> [!NOTE]
+> Set the path in `private.nix` to match:
+>
+> ```nix
+> identityFile = "/Users/<user>/.ssh/github/id_ed25519";
+> ```

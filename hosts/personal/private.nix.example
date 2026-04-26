@@ -1,0 +1,19 @@
+# Copy to private.nix and fill in your values (git-ignored)
+{
+  git = {
+    userName = "your-name";
+    userEmail = "your-email";
+  };
+  networking = {
+    hostName = "your-hostname";
+    computerName = "your-hostname";
+    localHostName = "your-hostname";
+  };
+  ssh = {
+    github = {
+      hostname = "github.com";
+      user = "git";
+      identityFile = "/Users/your-username/.ssh/github/id_ed25519";
+    };
+  };
+}
