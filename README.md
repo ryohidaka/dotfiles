@@ -20,7 +20,8 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 └── lib/
     ├── default.nix        # mkDarwinSystem factory
     └── darwin/
-        └── system.nix     # nixpkgs platform, primaryUser, nix settings
+        ├── system.nix     # nixpkgs platform, primaryUser, nix settings
+        └── home-manager.nix
 ```
 
 ## Prerequisites

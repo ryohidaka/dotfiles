@@ -10,6 +10,12 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # home-manager: user environment configuration via Nix
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -27,8 +33,6 @@
     in
     {
       # Build a darwinConfiguration for each host
-      darwinConfigurations = builtins.mapAttrs (
-        name: hostPath: lib.mkDarwinSystem name (import hostPath)
-      ) hosts;
+      darwinConfigurations = builtins.mapAttrs (name: hostPath: lib.mkDarwinSystem name hostPath) hosts;
     };
 }

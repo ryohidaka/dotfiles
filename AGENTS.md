@@ -4,7 +4,7 @@ This file provides context and conventions for AI agents (and contributors) work
 
 ## Project Overview
 
-A fully declarative macOS dotfiles system using **Nix flakes** and **nix-darwin**.
+A fully declarative macOS dotfiles system using **Nix flakes**, **nix-darwin**, and **home-manager**.
 The goal is a reproducible, multi-host configuration with clean separation of concerns and independent buildability of every commit.
 
 ### Hosts
@@ -22,6 +22,7 @@ The goal is a reproducible, multi-host configuration with clean separation of co
 `flake.nix` uses a **factory pattern** that assembles each host from per-host files under `hosts/`:
 
 - Per-host files under `hosts/` define the nix-darwin settings for each machine
+- `mkHomeManagerConfig` — home-manager user settings
 - `mkDarwinSystem` — composes those host-specific settings into a final `darwinSystem`
 
 ---
@@ -46,6 +47,7 @@ Always write commit messages in **English**.
 | Scope                    | Prefix              | When to use                                         |
 | ------------------------ | ------------------- | --------------------------------------------------- |
 | Entire Nix configuration | `feat(nix):`        | Flake-level or cross-cutting Nix changes            |
+| home-manager, all hosts  | `feat(home):`       | home-manager module changes that apply everywhere   |
 | Specific host only       | `feat(<hostname>):` | Changes scoped to one host (e.g. `feat(intel):`)    |
 | CI                       | `ci:`               | GitHub Actions workflows                            |
 | Chores / tooling         | `chore:`            | Formatting, lock file bumps, non-functional changes |
@@ -55,8 +57,19 @@ Always write commit messages in **English**.
 
 ```
 feat(nix): add sops-nix and age secret management
+feat(home): integrate Starship via initExtra for controlled load order
 feat(intel): configure WezTerm with JetBrainsMono Nerd Font
 ci: add darwin build matrix for intel and silicon runners
 chore: update flake.lock
 docs: document sops age key path workaround
 ```
+
+---
+
+## Known Gotchas
+
+| Issue                                     | Resolution                                           |
+| ----------------------------------------- | ---------------------------------------------------- |
+| Build fails without `system.primaryUser`  | Always set `system.primaryUser` in nix-darwin config |
+| `environment` vs `home.packages` mismatch | Use `home.packages` inside home-manager modules      |
+| `darwinModules` optionals line missing    | Ensure `mkDarwinSystem` includes the optionals line  |
