@@ -16,3 +16,22 @@ jobs:
       # Only check flake syntax and evaluation.
       - name: Check flake
         run: nix flake check --no-build
+
+  build-darwin:
+    name: Build nix-darwin (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    needs: check
+    strategy:
+      matrix:
+        include:
+          - arch: x86_64-darwin
+            runner: macos-26-intel
+            target: ci-intel
+          - arch: aarch64-darwin
+            runner: macos-latest
+            target: ci-silicon
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - name: Build nix-darwin configuration
+        run: nix build .#darwinConfigurations.${{ matrix.target }}.system
