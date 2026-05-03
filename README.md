@@ -8,8 +8,12 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 
 ```
 .
-├── flake.nix              # Flake definition (inputs/outputs)
-└── flake.lock
+├── flake.nix              # Flake inputs & darwinConfigurations outputs
+├── flake.lock
+└── lib/
+    ├── default.nix        # mkDarwinSystem factory
+    └── darwin/
+        └── system.nix     # nixpkgs platform, primaryUser, nix settings
 ```
 
 ## Prerequisites
@@ -41,3 +45,9 @@ curl -fsSL https://install.determinate.systems/nix/tag/v3.12.2 | sh -s -- instal
 ```bash
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 ```
+
+## Hosts
+
+| Host | Platform | Description |
+| ---- | -------- | ----------- |
+|      |          |             |
