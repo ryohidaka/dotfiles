@@ -9,9 +9,11 @@ The goal is a reproducible, multi-host configuration with clean separation of co
 
 ### Hosts
 
-| Hostname | Architecture | User        | Notes          |
-| -------- | ------------ | ----------- | -------------- |
-| `intel`  | Intel Mac    | `ryohidaka` | Intel Mac host |
+| Hostname     | Architecture  | User        | Notes                         |
+| ------------ | ------------- | ----------- | ----------------------------- |
+| `intel`      | Intel Mac     | `ryohidaka` | Intel Mac host                |
+| `ci-intel`   | Intel Mac     | `runner`    | GitHub Actions Intel target   |
+| `ci-silicon` | Apple Silicon | `runner`    | GitHub Actions Silicon target |
 
 ---
 

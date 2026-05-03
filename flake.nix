@@ -21,6 +21,8 @@
       # Host definitions
       hosts = {
         intel = ./hosts/intel;
+        ci-intel = ./hosts/ci-intel;
+        ci-silicon = ./hosts/ci-silicon;
       };
     in
     {
