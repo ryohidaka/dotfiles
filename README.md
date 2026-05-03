@@ -8,8 +8,19 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 
 ```
 .
-├── flake.nix              # Flake definition (inputs/outputs)
-└── flake.lock
+├── flake.nix              # Flake inputs & darwinConfigurations outputs
+├── flake.lock
+├── hosts/
+│   ├── intel/             # Intel Mac host
+│   │   └── default.nix    # Platform, user
+│   ├── ci-intel/          # GitHub Actions — x86_64-darwin
+│   │   └── default.nix    # CI host definition
+│   └── ci-silicon/        # GitHub Actions — aarch64-darwin
+│       └── default.nix    # CI host definition
+└── lib/
+    ├── default.nix        # mkDarwinSystem factory
+    └── darwin/
+        └── system.nix     # nixpkgs platform, primaryUser, nix settings
 ```
 
 ## Prerequisites
@@ -40,4 +51,20 @@ curl -fsSL https://install.determinate.systems/nix/tag/v3.12.2 | sh -s -- instal
 
 ```bash
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+```
+
+## Hosts
+
+| Host         | Platform       | Description                           |
+| ------------ | -------------- | ------------------------------------- |
+| `intel`      | x86_64-darwin  | Intel Mac                             |
+| `ci-intel`   | x86_64-darwin  | GitHub Actions runner (Intel)         |
+| `ci-silicon` | aarch64-darwin | GitHub Actions runner (Apple Silicon) |
+
+## Setup
+
+### Apply configuration
+
+```bash
+darwin-rebuild switch --flake path:.#intel --impure
 ```
