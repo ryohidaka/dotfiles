@@ -73,3 +73,11 @@ docs: document sops age key path workaround
 | Build fails without `system.primaryUser`  | Always set `system.primaryUser` in nix-darwin config |
 | `environment` vs `home.packages` mismatch | Use `home.packages` inside home-manager modules      |
 | `darwinModules` optionals line missing    | Ensure `mkDarwinSystem` includes the optionals line  |
+
+---
+
+## Formatter & Linting
+
+- **Nix**: `nix-fmt` / `treefmt`
+
+All tools are installed via home-manager so they are available in the managed shell environment.
