@@ -5,7 +5,9 @@ let
   homeManager = inputs."home-manager";
 
   # Home-manager modules shared across all hosts
-  baseHomeModules = [ ];
+  baseHomeModules = [
+    ./home/tools
+  ];
 
   # Load optional private config from host directory
   loadPrivate =
