@@ -24,6 +24,8 @@ let
     in
     hostCfg
     // {
+      inherit private;
+      networking = private.networking or { };
       homeModules = baseHomeModules ++ (hostCfg.homeModules or [ ]);
     };
 in

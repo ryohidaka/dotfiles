@@ -1,5 +1,9 @@
-{ platform, user, ... }:
-{ ... }:
+{
+  platform,
+  user,
+  networking ? { },
+  ...
+}:
 {
   # Target platform architecture (e.g. x86_64-darwin, aarch64-darwin)
   nixpkgs.hostPlatform = platform;
@@ -12,4 +16,7 @@
 
   # Disable nix managed by nix-darwin (e.g. when using Determinate Nix)
   nix.enable = false;
+
+  # Networking settings
+  inherit networking;
 }

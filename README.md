@@ -81,7 +81,13 @@ cp hosts/intel/private.nix.example hosts/intel/private.nix
 Edit `hosts/intel/private.nix`:
 
 ```nix
-{ }
+{
+  networking = {
+    hostName = "your-hostname";
+    computerName = "your-hostname";
+    localHostName = "your-hostname";
+  };
+}
 ```
 
 ### 2. Apply configuration
