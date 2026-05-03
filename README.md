@@ -2,6 +2,14 @@
 
 Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flakes).
 
+## Directory Structure
+
+```
+.
+├── flake.nix              # Flake definition (inputs/outputs)
+└── flake.lock
+```
+
 ## Prerequisites
 
 - macOS
