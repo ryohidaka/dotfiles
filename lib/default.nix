@@ -7,11 +7,20 @@ let
   # Home-manager modules shared across all hosts
   baseHomeModules = [ ];
 
+  # Load optional private config from host directory
+  loadPrivate =
+    hostDir:
+    if builtins.pathExists "${toString hostDir}/private.nix" then
+      import "${toString hostDir}/private.nix"
+    else
+      { };
+
   # Merge host config with private values and resolved fields
   mkHostConfig =
     hostDir:
     let
       hostCfg = import hostDir;
+      private = loadPrivate hostDir;
     in
     hostCfg
     // {

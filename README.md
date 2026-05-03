@@ -12,13 +12,19 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 ├── flake.lock
 ├── hosts/
 │   ├── intel/             # Intel Mac host
-│   │   └── default.nix    # Platform, user
+│   │   ├── default.nix    # Platform, user
+│   │   ├── private.nix    # Git-ignored local values (git, gpg, ssh, networking)
+│   │   └── private.nix.example
 │   ├── ci-intel/          # GitHub Actions — x86_64-darwin
-│   │   └── default.nix    # CI host definition
+│   │   ├── default.nix    # CI host definition
+│   │   ├── private.nix    # Git-ignored local values (git, gpg, ssh, networking)
+│   │   └── private.nix.example
 │   └── ci-silicon/        # GitHub Actions — aarch64-darwin
-│       └── default.nix    # CI host definition
+│       ├── default.nix    # CI host definition
+│       ├── private.nix    # Git-ignored local values (git, gpg, ssh, networking)
+│       └── private.nix.example
 └── lib/
-    ├── default.nix        # mkDarwinSystem factory
+    ├── default.nix        # mkHostConfig + mkDarwinSystem factory
     └── darwin/
         ├── system.nix     # nixpkgs platform, primaryUser, nix settings
         └── home-manager.nix
@@ -64,7 +70,21 @@ curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 
 ## Setup
 
-### Apply configuration
+### 1. Configure private values
+
+Copy the example file and fill in your values (this file is git-ignored):
+
+```bash
+cp hosts/intel/private.nix.example hosts/intel/private.nix
+```
+
+Edit `hosts/intel/private.nix`:
+
+```nix
+{ }
+```
+
+### 2. Apply configuration
 
 ```bash
 darwin-rebuild switch --flake path:.#intel --impure

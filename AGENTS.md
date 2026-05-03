@@ -21,7 +21,7 @@ The goal is a reproducible, multi-host configuration with clean separation of co
 
 `flake.nix` uses a **factory pattern** that assembles each host from per-host files under `hosts/`:
 
-- Per-host files under `hosts/` define the nix-darwin settings for each machine
+- `mkHostConfig` — nix-darwin system settings
 - `mkHomeManagerConfig` — home-manager user settings
 - `mkDarwinSystem` — composes those host-specific settings into a final `darwinSystem`
 
