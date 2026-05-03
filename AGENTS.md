@@ -9,9 +9,9 @@ The goal is a reproducible, multi-host configuration with clean separation of co
 
 ### Hosts
 
-| Hostname | Architecture | User | Notes |
-| -------- | ------------ | ---- | ----- |
-|          |              |      |       |
+| Hostname | Architecture | User        | Notes          |
+| -------- | ------------ | ----------- | -------------- |
+| `intel`  | Intel Mac    | `ryohidaka` | Intel Mac host |
 
 ---
 
@@ -24,22 +24,36 @@ The goal is a reproducible, multi-host configuration with clean separation of co
 
 ---
 
+## Build Commands
+
+```bash
+# Build & switch (intel host, git-ignored files required)
+darwin-rebuild switch --flake path:.#intel --impure
+
+# Check without switching
+nix build path:.#darwinConfigurations.intel.system --impure
+```
+
+---
+
 ## Commit Conventions
 
 Commits follow **Conventional Commits** with the scoping rules below.
 Always write commit messages in **English**.
 
-| Scope                    | Prefix       | When to use                                         |
-| ------------------------ | ------------ | --------------------------------------------------- |
-| Entire Nix configuration | `feat(nix):` | Flake-level or cross-cutting Nix changes            |
-| CI                       | `ci:`        | GitHub Actions workflows                            |
-| Chores / tooling         | `chore:`     | Formatting, lock file bumps, non-functional changes |
-| Documentation            | `docs:`      | Docs-only changes (always a separate commit)        |
+| Scope                    | Prefix              | When to use                                         |
+| ------------------------ | ------------------- | --------------------------------------------------- |
+| Entire Nix configuration | `feat(nix):`        | Flake-level or cross-cutting Nix changes            |
+| Specific host only       | `feat(<hostname>):` | Changes scoped to one host (e.g. `feat(intel):`)    |
+| CI                       | `ci:`               | GitHub Actions workflows                            |
+| Chores / tooling         | `chore:`            | Formatting, lock file bumps, non-functional changes |
+| Documentation            | `docs:`             | Docs-only changes (always a separate commit)        |
 
 **Examples**
 
 ```
 feat(nix): add sops-nix and age secret management
+feat(intel): configure WezTerm with JetBrainsMono Nerd Font
 ci: add darwin build matrix for intel and silicon runners
 chore: update flake.lock
 docs: document sops age key path workaround

@@ -10,6 +10,9 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 .
 ├── flake.nix              # Flake inputs & darwinConfigurations outputs
 ├── flake.lock
+├── hosts/
+│   └── intel/             # Intel Mac host
+│       └── default.nix    # Platform, user
 └── lib/
     ├── default.nix        # mkDarwinSystem factory
     └── darwin/
@@ -48,6 +51,14 @@ curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 
 ## Hosts
 
-| Host | Platform | Description |
-| ---- | -------- | ----------- |
-|      |          |             |
+| Host    | Platform      | Description |
+| ------- | ------------- | ----------- |
+| `intel` | x86_64-darwin | Intel Mac   |
+
+## Setup
+
+### Apply configuration
+
+```bash
+darwin-rebuild switch --flake path:.#intel --impure
+```
