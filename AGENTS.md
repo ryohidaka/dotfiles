@@ -79,5 +79,6 @@ docs: document sops age key path workaround
 ## Formatter & Linting
 
 - **Nix**: `nix-fmt` / `treefmt`
+- **Git hooks**: `lefthook`
 
 All tools are installed via home-manager so they are available in the managed shell environment.
