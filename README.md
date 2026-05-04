@@ -29,7 +29,7 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
     │   ├── system.nix     # nixpkgs platform, primaryUser, nix settings
     │   └── home-manager.nix
     └── home/
-        └── tools/         # formatter
+        └── tools/         # git, formatter
 ```
 
 ## Prerequisites
