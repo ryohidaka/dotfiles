@@ -23,15 +23,18 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 │       ├── default.nix    # CI host definition
 │       ├── private.nix    # Git-ignored local values (git, gpg, ssh, networking)
 │       └── private.nix.example
-└── lib/
-    ├── default.nix        # mkHostConfig + mkDarwinSystem factory
-    ├── darwin/
-    │   ├── system.nix     # nixpkgs platform, primaryUser, fonts, nix settings
-    │   ├── home-manager.nix
-    │   └── homebrew.nix   # nix-homebrew infra (packages defined per host)
-    └── home/
-        ├── shell/         # Zsh
-        └── tools/         # git, gpg, ssh, formatter
+├── lib/
+│   ├── default.nix        # mkHostConfig + mkDarwinSystem factory
+│   ├── darwin/
+│   │   ├── system.nix     # nixpkgs platform, primaryUser, fonts, nix settings
+│   │   ├── home-manager.nix
+│   │   └── homebrew.nix   # nix-homebrew infra (packages defined per host)
+│   └── home/
+│       ├── shell/         # Zsh
+│       ├── terminal/      # WezTerm
+│       └── tools/         # git, gpg, ssh, formatter
+└── config/
+    └── wezterm/           # WezTerm config (Lua)
 ```
 
 ## Prerequisites

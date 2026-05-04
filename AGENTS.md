@@ -67,9 +67,10 @@ docs: document sops age key path workaround
 
 ---
 
-## Shell Stack
+## Shell & Terminal Stack
 
 - **Shell**: Zsh managed by home-manager
+- **Terminal**: WezTerm with JetBrainsMono Nerd Font (`pkgs.nerd-fonts.jetbrains-mono`)
 
 ---
 
