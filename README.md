@@ -12,7 +12,7 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 ├── flake.lock
 ├── hosts/
 │   ├── intel/             # Intel Mac host
-│   │   ├── default.nix    # Platform, user
+│   │   ├── default.nix    # Platform, user, enableHomebrew, homebrew packages
 │   │   ├── private.nix    # Git-ignored local values (git, gpg, ssh, networking)
 │   │   └── private.nix.example
 │   ├── ci-intel/          # GitHub Actions — x86_64-darwin
@@ -27,7 +27,8 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
     ├── default.nix        # mkHostConfig + mkDarwinSystem factory
     ├── darwin/
     │   ├── system.nix     # nixpkgs platform, primaryUser, nix settings
-    │   └── home-manager.nix
+    │   ├── home-manager.nix
+    │   └── homebrew.nix   # nix-homebrew infra (packages defined per host)
     └── home/
         └── tools/         # git, formatter
 ```

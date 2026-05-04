@@ -23,6 +23,7 @@ The goal is a reproducible, multi-host configuration with clean separation of co
 
 - `mkHostConfig` — nix-darwin system settings
 - `mkHomeManagerConfig` — home-manager user settings
+- `mkHomebrewModules` — Homebrew packages
 - `mkDarwinSystem` — composes those host-specific settings into a final `darwinSystem`
 
 ---
