@@ -3,11 +3,23 @@ let
   inherit (inputs) self;
   nixDarwin = inputs."nix-darwin";
   homeManager = inputs."home-manager";
+  nixHomebrew = inputs."nix-homebrew";
 
   # Home-manager modules shared across all hosts
   baseHomeModules = [
     ./home/tools
   ];
+
+  # Conditionally include Homebrew modules based on host config
+  mkHomebrewModules =
+    cfg:
+    if cfg.enableHomebrew or false then
+      [
+        nixHomebrew.darwinModules.nix-homebrew
+        (import ./darwin/homebrew.nix cfg)
+      ]
+    else
+      [ ];
 
   # Load optional private config from host directory
   loadPrivate =
@@ -46,6 +58,7 @@ in
         homeManager.darwinModules.home-manager
         (import ./darwin/home-manager.nix { inherit self; } cfg)
       ]
+      ++ (mkHomebrewModules cfg)
       ++ (cfg.darwinModules or [ ]);
     };
 }
