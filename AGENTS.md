@@ -90,6 +90,7 @@ docs: document sops age key path workaround
 
 - **Nix**: `nix fmt` / `treefmt` (using `nixfmt`)
 - **Lua**: `stylua`
+- **TOML**: `taplo`
 - **Git hooks**: `lefthook`
 
 All tools are installed via home-manager, so they are available in the managed shell environment.
