@@ -9,4 +9,11 @@
     computerName = "your-hostname";
     localHostName = "your-hostname";
   };
+  ssh = {
+    github = {
+      hostname = "github.com";
+      user = "git";
+      identityFile = "/Users/your-username/.ssh/github/id_ed25519";
+    };
+  };
 }
