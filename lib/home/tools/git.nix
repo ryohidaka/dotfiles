@@ -1,4 +1,9 @@
-{ pkgs, hostPrivate, ... }:
+{
+  pkgs,
+  lib,
+  hostPrivate,
+  ...
+}:
 let
   gitCfg = hostPrivate.git or { };
 in
@@ -19,6 +24,10 @@ in
         name = gitCfg.userName or "";
         email = gitCfg.userEmail or "";
       };
+    };
+    signing = lib.optionalAttrs (hostPrivate ? gpg && hostPrivate.gpg ? signingKey) {
+      key = hostPrivate.gpg.signingKey;
+      signByDefault = true;
     };
     ignores = [
       ".DS_Store"
