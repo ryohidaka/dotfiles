@@ -31,7 +31,7 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
     │   └── homebrew.nix   # nix-homebrew infra (packages defined per host)
     └── home/
         ├── shell/         # Zsh
-        └── tools/         # git, ssh, formatter
+        └── tools/         # git, gpg, ssh, formatter
 ```
 
 ## Prerequisites
@@ -90,6 +90,7 @@ Edit `hosts/intel/private.nix`:
     userName = "Your Name";
     userEmail = "you@example.com";
   };
+  gpg.signingKey = "YOUR_GPG_KEY_ID";
   networking = {
     hostName = "your-hostname";
     computerName = "your-hostname";

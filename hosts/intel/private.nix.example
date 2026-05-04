@@ -4,6 +4,9 @@
     userName = "your-name";
     userEmail = "your-email";
   };
+  gpg = {
+    signingKey = "your-gpg-id";
+  };
   networking = {
     hostName = "your-hostname";
     computerName = "your-hostname";
