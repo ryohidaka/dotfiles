@@ -31,7 +31,7 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
     │   └── homebrew.nix   # nix-homebrew infra (packages defined per host)
     └── home/
         ├── shell/         # Zsh
-        └── tools/         # git, formatter
+        └── tools/         # git, gpg, ssh, formatter
 ```
 
 ## Prerequisites
@@ -86,15 +86,32 @@ Edit `hosts/intel/private.nix`:
 
 ```nix
 {
+  git = {
+    userName = "Your Name";
+    userEmail = "you@example.com";
+  };
+  gpg.signingKey = "YOUR_GPG_KEY_ID";
   networking = {
     hostName = "your-hostname";
     computerName = "your-hostname";
     localHostName = "your-hostname";
   };
+  ssh.github = {
+    hostname = "github.com";
+    user = "git";
+    identityFile = "/Users/<user>/.ssh/github/id_ed25519";
+  };
 }
 ```
 
-### 2. Apply configuration
+### 2. Generate SSH key
+
+```bash
+mkdir -p ~/.ssh/github
+ssh-keygen -t ed25519 -f ~/.ssh/github/id_ed25519 -C "your_email@example.com"
+```
+
+### 3. Apply configuration
 
 ```bash
 darwin-rebuild switch --flake path:.#intel --impure
