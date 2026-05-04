@@ -26,7 +26,7 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 └── lib/
     ├── default.nix        # mkHostConfig + mkDarwinSystem factory
     ├── darwin/
-    │   ├── system.nix     # nixpkgs platform, primaryUser, nix settings
+    │   ├── system.nix     # nixpkgs platform, primaryUser, fonts, nix settings
     │   ├── home-manager.nix
     │   └── homebrew.nix   # nix-homebrew infra (packages defined per host)
     └── home/
