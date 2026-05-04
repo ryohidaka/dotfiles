@@ -25,6 +25,19 @@
       lib = import ./lib inputs;
 
       # Host definitions
+      supportedSystems = [
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      forAllSystems =
+        f:
+        builtins.listToAttrs (
+          map (system: {
+            name = system;
+            value = f system;
+          }) supportedSystems
+        );
+
       hosts = {
         intel = ./hosts/intel;
         ci-intel = ./hosts/ci-intel;
@@ -34,5 +47,8 @@
     {
       # Build a darwinConfiguration for each host
       darwinConfigurations = builtins.mapAttrs (name: hostPath: lib.mkDarwinSystem name hostPath) hosts;
+
+      # Format: nix fmt
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.treefmt);
     };
 }

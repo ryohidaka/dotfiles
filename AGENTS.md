@@ -73,3 +73,15 @@ docs: document sops age key path workaround
 | Build fails without `system.primaryUser`  | Always set `system.primaryUser` in nix-darwin config |
 | `environment` vs `home.packages` mismatch | Use `home.packages` inside home-manager modules      |
 | `darwinModules` optionals line missing    | Ensure `mkDarwinSystem` includes the optionals line  |
+
+---
+
+## Formatter & Linting
+
+- **Nix**: `nix fmt` / `treefmt` (using `nixfmt`)
+- **Git hooks**: `lefthook`
+
+All tools are installed via home-manager, so they are available in the managed shell environment.
+
+After initial setup, run `lefthook install` in the repository to enable the Git hooks locally.
+Installing `lefthook` via home-manager makes the binary available, but does not by itself activate the hooks.
