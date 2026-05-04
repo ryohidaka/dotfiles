@@ -58,7 +58,7 @@ Always write commit messages in **English**.
 
 ```
 feat(nix): add sops-nix and age secret management
-feat(home): integrate Starship via initExtra for controlled load order
+feat(home): integrate Starship via initContent for controlled load order
 feat(intel): configure WezTerm with JetBrainsMono Nerd Font
 ci: add darwin build matrix for intel and silicon runners
 chore: update flake.lock
@@ -70,6 +70,8 @@ docs: document sops age key path workaround
 ## Shell & Terminal Stack
 
 - **Shell**: Zsh managed by home-manager
+  - Starship integrated via manual `initContent` (not `programs.starship.enableZshIntegration`) to
+    control load order relative to WezTerm shell integration
 - **Terminal**: WezTerm with JetBrainsMono Nerd Font (`pkgs.nerd-fonts.jetbrains-mono`)
 
 ---
