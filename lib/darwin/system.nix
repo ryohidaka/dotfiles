@@ -17,6 +17,9 @@
   # Disable nix managed by nix-darwin (e.g. when using Determinate Nix)
   nix.enable = false;
 
+  # Enable zsh system-level integration
+  programs.zsh.enable = true;
+
   # Networking settings
   inherit networking;
 }

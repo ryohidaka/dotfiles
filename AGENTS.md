@@ -67,6 +67,12 @@ docs: document sops age key path workaround
 
 ---
 
+## Shell Stack
+
+- **Shell**: Zsh managed by home-manager
+
+---
+
 ## Known Gotchas
 
 | Issue                                     | Resolution                                           |

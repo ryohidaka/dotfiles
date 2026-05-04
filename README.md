@@ -30,6 +30,7 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
     │   ├── home-manager.nix
     │   └── homebrew.nix   # nix-homebrew infra (packages defined per host)
     └── home/
+        ├── shell/         # Zsh
         └── tools/         # git, formatter
 ```
 
