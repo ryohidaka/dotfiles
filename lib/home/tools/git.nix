@@ -8,4 +8,12 @@
     enable = true;
     enableZshIntegration = true;
   };
+
+  programs.git = {
+    enable = true;
+    ignores = [
+      ".DS_Store"
+      ".direnv"
+    ];
+  };
 }
