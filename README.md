@@ -86,6 +86,10 @@ Edit `hosts/intel/private.nix`:
 
 ```nix
 {
+  git = {
+    userName = "Your Name";
+    userEmail = "you@example.com";
+  };
   networking = {
     hostName = "your-hostname";
     computerName = "your-hostname";

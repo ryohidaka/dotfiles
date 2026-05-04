@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, hostPrivate, ... }:
+let
+  gitCfg = hostPrivate.git or { };
+in
 {
   home.packages = with pkgs; [
     lefthook # Git Hooks
@@ -11,6 +14,12 @@
 
   programs.git = {
     enable = true;
+    settings = {
+      user = {
+        name = gitCfg.userName or "";
+        email = gitCfg.userEmail or "";
+      };
+    };
     ignores = [
       ".DS_Store"
       ".direnv"
