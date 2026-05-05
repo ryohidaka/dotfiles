@@ -13,6 +13,8 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 ├── hosts/
 │   ├── intel/             # Intel Mac host
 │   │   ├── default.nix    # Platform, user, enableHomebrew, homebrew packages
+│   │   ├── sops.nix       # sops secrets path
+│   │   ├── secrets.yaml   # Encrypted secrets (age)
 │   │   ├── private.nix    # Git-ignored local values (git, gpg, ssh, networking)
 │   │   └── private.nix.example
 │   ├── ci-intel/          # GitHub Actions — x86_64-darwin
