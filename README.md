@@ -33,7 +33,7 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 │       ├── editor/        # Neovim (LazyVim)
 │       ├── shell/         # Zsh, Starship
 │       ├── terminal/      # WezTerm
-│       └── tools/         # git, gpg, ssh, mise, formatter
+│       └── tools/         # git, gpg, ssh, mise, sops, formatter
 └── config/
     ├── nvim/              # LazyVim configuration (Lua)
     ├── starship/          # Starship prompt config (TOML)
@@ -138,3 +138,9 @@ ssh-keygen -t ed25519 -f ~/.ssh/github/id_ed25519 -C "your_email@example.com"
 ```bash
 darwin-rebuild switch --flake path:.#intel --impure
 ```
+
+## Secrets
+
+Secrets are managed with [sops](https://github.com/getsentry/sops) + [age](https://github.com/FiloSottile/age).
+
+The age key path is set via `SOPS_AGE_KEY_FILE` in your shell environment after the first rebuild.
