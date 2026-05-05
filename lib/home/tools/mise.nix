@@ -2,6 +2,7 @@
 let
   globalTools = {
     node = "latest";
+    "npm:pnpm" = "latest";
   };
 in
 {
