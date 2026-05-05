@@ -33,7 +33,7 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 │       ├── editor/        # Neovim (LazyVim)
 │       ├── shell/         # Zsh, Starship
 │       ├── terminal/      # WezTerm
-│       └── tools/         # git, gpg, ssh, formatter
+│       └── tools/         # git, gpg, ssh, mise, formatter
 └── config/
     ├── nvim/              # LazyVim configuration (Lua)
     ├── starship/          # Starship prompt config (TOML)
