@@ -29,5 +29,9 @@ in
       LANG = "en_US.UTF-8";
     };
     plugins = zshPlugins;
+    initContent = ''
+      # Initialize Starship prompt
+      eval "$(starship init zsh)"
+    '';
   };
 }

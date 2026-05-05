@@ -3,5 +3,7 @@
   home.packages = with pkgs; [
     nixfmt-rfc-style # Nix formatter
     treefmt # Multi-formatter runner
+    stylua # Lua formatter
+    taplo # TOML formatter
   ];
 }
