@@ -97,8 +97,8 @@ docs: document sops age key path workaround
 
 - Age key path set via `SOPS_AGE_KEY_FILE` environment variable (overrides macOS default)
 - `.sops.yaml` `path_regex` patterns are relative to the file's location — do **not** prefix with `secrets/`
-  - Correct: `intel\.yaml$`
-  - Incorrect: `secrets/intel\.yaml$`
+  - Correct: `intel/secrets\.yaml$`
+  - Incorrect: `secrets/intel/secrets\.yaml$`
 
 ---
 
