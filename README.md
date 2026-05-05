@@ -110,14 +110,30 @@ Edit `hosts/intel/private.nix`:
 }
 ```
 
-### 2. Generate SSH key
+### 2. Generate age key (for secrets)
+
+```bash
+# Create key directory
+mkdir -p ~/.config/sops/age
+
+# Generate age key (one-time, using nix shell)
+nix shell nixpkgs#age --command age-keygen -o ~/.config/sops/age/keys.txt
+
+# Show public key — add this to .sops.yaml
+grep "public key" ~/.config/sops/age/keys.txt
+```
+
+> [!WARNING]
+> Keep `~/.config/sops/age/keys.txt` secret. Never commit it to the repository.
+
+### 3. Generate SSH key
 
 ```bash
 mkdir -p ~/.ssh/github
 ssh-keygen -t ed25519 -f ~/.ssh/github/id_ed25519 -C "your_email@example.com"
 ```
 
-### 3. Apply configuration
+### 4. Apply configuration
 
 ```bash
 darwin-rebuild switch --flake path:.#intel --impure
