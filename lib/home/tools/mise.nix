@@ -1,6 +1,8 @@
 { ... }:
 let
-  globalTools = { };
+  globalTools = {
+    node = "latest";
+  };
 in
 {
   programs.mise = {
