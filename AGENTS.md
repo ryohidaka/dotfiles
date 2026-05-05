@@ -26,6 +26,9 @@ The goal is a reproducible, multi-host configuration with clean separation of co
 - `mkHomebrewModules` — Homebrew packages
 - `mkDarwinSystem` — composes those host-specific settings into a final `darwinSystem`
 
+Config files (Lua/TOML dotfiles for LazyVim, WezTerm, Starship, etc.) live in `config/` and are
+referenced via `flakeRoot` passed through `extraSpecialArgs`.
+
 ---
 
 ## Build Commands
@@ -73,6 +76,8 @@ docs: document sops age key path workaround
   - Starship integrated via manual `initContent` (not `programs.starship.enableZshIntegration`) to
     control load order relative to WezTerm shell integration
 - **Terminal**: WezTerm with JetBrainsMono Nerd Font (`pkgs.nerd-fonts.jetbrains-mono`)
+- **Prompt**: Starship config managed via Nix
+- **Editor**: Neovim via LazyVim (`config/nvim`)
 
 ---
 

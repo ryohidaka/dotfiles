@@ -24,6 +24,9 @@ in
         name = gitCfg.userName or "";
         email = gitCfg.userEmail or "";
       };
+      core = {
+        editor = "nvim";
+      };
     };
     signing = lib.optionalAttrs (hostPrivate ? gpg && hostPrivate.gpg ? signingKey) {
       key = hostPrivate.gpg.signingKey;
