@@ -31,6 +31,18 @@ referenced via `flakeRoot` passed through `extraSpecialArgs`.
 
 ---
 
+## Key Principles
+
+1. **Every commit must build independently.** Feature commits and docs commits are always kept separate.
+2. **Prefer home-manager for user tools** (nix-fmt/treefmt, lefthook, Starship, etc.) so they are
+   available in the managed environment, not only in the flake dev shell.
+3. **home-manager owns its dotfiles.** Any file managed by home-manager (e.g. `~/.config/starship.toml`)
+   is a symlink — manual edits will be overwritten on rebuild. Apply presets/patches via Nix config instead.
+4. **Secrets stay out of the store.** Use `path:.#<host> --impure` (not `git+file://`) so git-ignored
+   files like `private.nix` and age keys can be accessed at build time.
+
+---
+
 ## Build Commands
 
 ```bash
@@ -107,6 +119,8 @@ docs: document sops age key path workaround
 - **Nix**: `nix fmt` / `treefmt` (using `nixfmt`)
 - **Lua**: `stylua`
 - **TOML**: `taplo`
+- **Markdown**: `oxfmt`
+- **YAML**: `oxfmt`
 - **Git hooks**: `lefthook`
 
 All tools are installed via home-manager, so they are available in the managed shell environment.
