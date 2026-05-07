@@ -27,6 +27,7 @@
       homebrew.casks or [
         "firefox"
         "google-chrome"
+        "microsoft-edge"
       ];
   };
 }
