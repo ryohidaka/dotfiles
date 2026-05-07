@@ -23,6 +23,11 @@
 
     taps = homebrew.taps or [ ];
     brews = homebrew.brews or [ ];
-    casks = homebrew.casks or [ ];
+    casks =
+      homebrew.casks or [
+        "firefox"
+        "google-chrome"
+        "microsoft-edge"
+      ];
   };
 }

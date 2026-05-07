@@ -64,6 +64,7 @@ Always write commit messages in **English**.
 | ------------------------ | ------------------- | --------------------------------------------------- |
 | Entire Nix configuration | `feat(nix):`        | Flake-level or cross-cutting Nix changes            |
 | home-manager, all hosts  | `feat(home):`       | home-manager module changes that apply everywhere   |
+| Homebrew packages        | `feat(homebrew):`   | Adding or modifying Homebrew packages               |
 | Specific host only       | `feat(<hostname>):` | Changes scoped to one host (e.g. `feat(intel):`)    |
 | CI                       | `ci:`               | GitHub Actions workflows                            |
 | Chores / tooling         | `chore:`            | Formatting, lock file bumps, non-functional changes |
@@ -74,6 +75,7 @@ Always write commit messages in **English**.
 ```
 feat(nix): add sops-nix and age secret management
 feat(home): integrate Starship via initContent for controlled load order
+feat(homebrew): add Google Chrome to casks
 feat(intel): configure WezTerm with JetBrainsMono Nerd Font
 ci: add darwin build matrix for intel and silicon runners
 chore: update flake.lock
