@@ -2,6 +2,7 @@
   # Intel Mac
   platform = "x86_64-darwin";
   user = "ryohidaka";
+  enableHomebrew = true;
 
   # Host-specific nix-darwin modules
   darwinModules = [
