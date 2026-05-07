@@ -6,6 +6,7 @@
   # Host-specific nix-darwin modules
   darwinModules = [
     ./homebrew.nix
+    ./sops.nix
   ];
 
   # Host-specific home-manager modules

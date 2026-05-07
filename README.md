@@ -13,6 +13,8 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 ├── hosts/
 │   ├── intel/             # Intel Mac host
 │   │   ├── default.nix    # Platform, user, enableHomebrew, homebrew packages
+│   │   ├── sops.nix       # sops secrets path
+│   │   ├── secrets.yaml   # Encrypted secrets (age)
 │   │   ├── private.nix    # Git-ignored local values (git, gpg, ssh, networking)
 │   │   └── private.nix.example
 │   ├── ci-intel/          # GitHub Actions — x86_64-darwin
@@ -33,7 +35,7 @@ Declarative macOS configuration using [Nix flakes](https://nixos.wiki/wiki/Flake
 │       ├── editor/        # Neovim (LazyVim)
 │       ├── shell/         # Zsh, Starship
 │       ├── terminal/      # WezTerm
-│       └── tools/         # git, gpg, ssh, mise, formatter
+│       └── tools/         # git, gpg, ssh, mise, sops, formatter
 └── config/
     ├── nvim/              # LazyVim configuration (Lua)
     ├── starship/          # Starship prompt config (TOML)
@@ -110,15 +112,37 @@ Edit `hosts/intel/private.nix`:
 }
 ```
 
-### 2. Generate SSH key
+### 2. Generate age key (for secrets)
+
+```bash
+# Create key directory
+mkdir -p ~/.config/sops/age
+
+# Generate age key (one-time, using nix shell)
+nix shell nixpkgs#age --command age-keygen -o ~/.config/sops/age/keys.txt
+
+# Show public key — add this to .sops.yaml
+grep "public key" ~/.config/sops/age/keys.txt
+```
+
+> [!WARNING]
+> Keep `~/.config/sops/age/keys.txt` secret. Never commit it to the repository.
+
+### 3. Generate SSH key
 
 ```bash
 mkdir -p ~/.ssh/github
 ssh-keygen -t ed25519 -f ~/.ssh/github/id_ed25519 -C "your_email@example.com"
 ```
 
-### 3. Apply configuration
+### 4. Apply configuration
 
 ```bash
 darwin-rebuild switch --flake path:.#intel --impure
 ```
+
+## Secrets
+
+Secrets are managed with [sops](https://github.com/getsentry/sops) + [age](https://github.com/FiloSottile/age).
+
+The age key path is set via `SOPS_AGE_KEY_FILE` in your shell environment after the first rebuild.

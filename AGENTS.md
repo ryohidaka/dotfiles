@@ -24,10 +24,22 @@ The goal is a reproducible, multi-host configuration with clean separation of co
 - `mkHostConfig` — nix-darwin system settings
 - `mkHomeManagerConfig` — home-manager user settings
 - `mkHomebrewModules` — Homebrew packages
-- `mkDarwinSystem` — composes those host-specific settings into a final `darwinSystem`
+- `mkDarwinSystem` — composes those host-specific settings into a final `darwinSystem`, including shared modules such as `sops-nix`
 
 Config files (Lua/TOML dotfiles for LazyVim, WezTerm, Starship, etc.) live in `config/` and are
 referenced via `flakeRoot` passed through `extraSpecialArgs`.
+
+---
+
+## Key Principles
+
+1. **Every commit must build independently.** Feature commits and docs commits are always kept separate.
+2. **Prefer home-manager for user tools** (nix-fmt/treefmt, lefthook, Starship, etc.) so they are
+   available in the managed environment, not only in the flake dev shell.
+3. **home-manager owns its dotfiles.** Any file managed by home-manager (e.g. `~/.config/starship.toml`)
+   is a symlink — manual edits will be overwritten on rebuild. Apply presets/patches via Nix config instead.
+4. **Secrets stay out of the store.** Use `path:.#<host> --impure` (not `git+file://`) so git-ignored
+   files like `private.nix` and age keys can be accessed at build time.
 
 ---
 
@@ -81,13 +93,24 @@ docs: document sops age key path workaround
 
 ---
 
+## Secrets (sops-nix + age)
+
+- Age key path set via `SOPS_AGE_KEY_FILE` environment variable (overrides macOS default)
+- `.sops.yaml` `path_regex` patterns are relative to the file's location — do **not** prefix with `secrets/`
+  - Correct: `intel/secrets\.yaml$`
+  - Incorrect: `secrets/intel/secrets\.yaml$`
+
+---
+
 ## Known Gotchas
 
-| Issue                                     | Resolution                                           |
-| ----------------------------------------- | ---------------------------------------------------- |
-| Build fails without `system.primaryUser`  | Always set `system.primaryUser` in nix-darwin config |
-| `environment` vs `home.packages` mismatch | Use `home.packages` inside home-manager modules      |
-| `darwinModules` optionals line missing    | Ensure `mkDarwinSystem` includes the optionals line  |
+| Issue                                     | Resolution                                               |
+| ----------------------------------------- | -------------------------------------------------------- |
+| Build fails without `system.primaryUser`  | Always set `system.primaryUser` in nix-darwin config     |
+| `environment` vs `home.packages` mismatch | Use `home.packages` inside home-manager modules          |
+| `darwinModules` optionals line missing    | Ensure `mkDarwinSystem` includes the optionals line      |
+| `.sops.yaml` regex not matching           | Check path prefix — patterns are relative, not absolute  |
+| sops age key path mismatch on macOS       | Set `SOPS_AGE_KEY_FILE` explicitly in `sessionVariables` |
 
 ---
 
@@ -96,6 +119,8 @@ docs: document sops age key path workaround
 - **Nix**: `nix fmt` / `treefmt` (using `nixfmt`)
 - **Lua**: `stylua`
 - **TOML**: `taplo`
+- **Markdown**: `oxfmt`
+- **YAML**: `oxfmt`
 - **Git hooks**: `lefthook`
 
 All tools are installed via home-manager, so they are available in the managed shell environment.
