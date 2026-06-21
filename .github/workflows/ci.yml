@@ -10,7 +10,7 @@ jobs:
     name: Check flake
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: cachix/install-nix-action@v31
       # nix-darwin configurations cannot be built on Linux.
       # Only check flake syntax and evaluation.
@@ -31,7 +31,7 @@ jobs:
             runner: macos-latest
             target: ci-silicon
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: cachix/install-nix-action@v31
       - name: Build nix-darwin configuration
         run: nix build .#darwinConfigurations.${{ matrix.target }}.system
